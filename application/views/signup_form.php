@@ -16,12 +16,12 @@
 
   <?php
     echo form_input('curp', set_value('curp', 'CURP'));
-    echo form_input('clave', set_value('clave', 'Contrasena'));
+    echo form_input('clave', set_value('clave', 'Contraseña'));
     echo form_input('clave2', set_value('clave2', 'Confirmacion'));
 
     echo form_submit('submit', 'Crear cuenta');
 
   ?>
 
-  <?php echo validation_errors("<p class='error'")?>
+  <?php echo validation_errors("<p class='error'>");?>
 </fieldset>

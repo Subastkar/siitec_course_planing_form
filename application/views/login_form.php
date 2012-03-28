@@ -7,7 +7,7 @@
   echo form_input('username','Usuario');
   echo form_password('password','Contrase&ntilde;a');
   echo form_submit('submit','Entrar');
-  echo anchor('login/signup','Crear cuenta');
+  //echo anchor('login/signup','Crear cuenta');
 
   ?>
 
