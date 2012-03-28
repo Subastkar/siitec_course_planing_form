@@ -9,11 +9,24 @@ class Personal_model extends CI_Model {
 
     if($query->num_rows == 1){
       return true;
-      echo $query->num_rows;
-      $is_logged_in = true;
     }
   }
 
+  function infoUsuario($user){
+    $this->db->where('idpersonal', $user);
+    $query = $this->db->get('personal');
+    if($query->num_rows == 1){
+      return $query->result();
+    }
+  }
+
+  function infoGrupos($user){
+    $this->db->where('idpersonal', $user);
+    $query = $this->db->get('grupo');
+    if($query->num_rows == 1){
+      return $query->result();
+    }
+  }
   //function create_personal() {
     //$new_personal_insert_data = (
       //'nombre' => $this->input->post->('nombre'),
