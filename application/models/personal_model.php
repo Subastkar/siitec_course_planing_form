@@ -20,9 +20,9 @@ class Personal_model extends CI_Model {
     }
   }
 
-  function infoGrupos($user){
+  function infoGrupos($user, $periodo){
     $this->db->where('idpersonal', $user);
-    $this->db->where('idperiodo', '2121');
+    $this->db->where('idperiodo', $periodo);
     $query = $this->db->get('view_grupos_materia');
     return $query->result();
   }

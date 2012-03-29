@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 
     if ($query)// if the user's crednetials validated
     {
-      $data = array('username' => $this->input->post('username'), 'is_logged_in' => true);
+      $data = array('username' => $this->input->post('username'), 'is_logged_in' => true, 'periodo' => '2121');
       $this->session->set_userdata($data);
       redirect('site/personal_area');
     }

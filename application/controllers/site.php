@@ -9,11 +9,12 @@ class Site extends CI_Controller {
 
   function personal_area(){
     $user = $this->session->userdata('username'); 
+    $periodo = $this->session->userdata('periodo'); 
     $this->load->model('personal_model');
 
     $data['nombre'] = $this->personal_model->infoUsuario($user);
 
-    $data['grupos'] = $this->personal_model->infoGrupos($user);
+    $data['grupos'] = $this->personal_model->infoGrupos($user,$periodo);
 
     $data['main_content'] = 'personal_area';
     $this->load->view('includes/template',$data);
@@ -35,7 +36,15 @@ class Site extends CI_Controller {
   }
 
   function course($materia){
-    echo $materia;
+
+    $query_data['user'] = $this->session->userdata('username'); 
+    $periodo = $this->session->userdata('periodo'); 
+    $query_data['materia'] = $materia;
+
+    $this->load->model('materia_model');
+
+    $data['main_content'] = 'planing_form';
+    $this->load->view('includes/template',$data);
   } 
 
 }
