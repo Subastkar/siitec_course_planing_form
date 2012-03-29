@@ -10,17 +10,13 @@ class Site extends CI_Controller {
   function personal_area(){
     $user = $this->session->userdata('username'); 
     $this->load->model('personal_model');
-    foreach($this->personal_model->infoUsuario($user) as $row){
-      $data['nombre'] = $row->nombre;
-      $data['apellido'] = $row->apellidop;
-    }
 
-    $query = $this->personal_model->infoGrupos($user);
-    $data['row'] = $query->row_array();
+    $data['nombre'] = $this->personal_model->infoUsuario($user);
+
+    $data['grupos'] = $this->personal_model->infoGrupos($user);
 
     $data['main_content'] = 'personal_area';
     $this->load->view('includes/template',$data);
-
   }
 
   function is_logged_in(){
