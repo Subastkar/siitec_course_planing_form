@@ -28,4 +28,14 @@ class Site extends CI_Controller {
     }
   }
 
+  function log_out(){
+    $data = array('username' => null, 'is_logged_in' => false);
+    $this->session->set_userdata($data);
+    redirect('../');
+  }
+
+  function course($materia){
+    echo $materia;
+  } 
+
 }
