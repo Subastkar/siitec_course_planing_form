@@ -36,7 +36,7 @@
     <p>Grupo: ____________ Carrera: _______________ Aula: ________________ Horario: _______________ Profesor: ______________________</p>
   </span>
 
-  <table border ='1'>
+  <table border ='1' align='center'>
     <tr>
       <th rowspan='2'>Unidad Tem&aacute;tica</th>
       <th rowspan='2'>Subtemas</th>
@@ -53,5 +53,23 @@
       <th>Programada</th>
       <th>Real</th>
     </tr>
+    <tr>
+    </tr>
+    <tr>
+      <td colspan='2' align='center'>Fecha de entrega de programaci&oacute;n</td>
+      <td colspan='6' align='center'>Periodo programado para 1er, 2do y 3er. Seguimiento</td>
+      <td colspan='2' align='center'>Periodo de entrega de reporte finak</td>
+    </tr>
+    <tr>
+      <td colspan='2' align='center'>Antes de inicio de clases</td>
+      <td colspan='2' align='center'> ( semana 5 ) </td>
+      <td colspan='2' align='center'> ( semana 9 ) </td>
+      <td colspan='2' align='center'> ( semana 13 ) </td>
+      <td colspan='2' align='center'> ( semana 16 o 17 ) </td>
+    </tr>
   </table>
+</div>
+
+<div id="foot_form">
+  
 </div>
