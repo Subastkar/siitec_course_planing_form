@@ -12,7 +12,7 @@
       echo "<tr>";
         echo"<td> " . $row->idgrupo . "</td>";
         echo"<td> " . $row->idmateria . "</td>";
-        echo"<td> " . $row->materia . "</td>";
+        echo"<td> " . $row->nombre . "</td>";
         echo"<td> " . anchor("site/course/". $row->idmateria,'Editar') . "</td>";
       echo "</tr>";
 }
