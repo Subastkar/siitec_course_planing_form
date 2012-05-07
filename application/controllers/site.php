@@ -41,7 +41,7 @@ class Site extends CI_Controller {
     $periodo = $this->session->userdata('periodo'); 
     $query_data['materia'] = $materia;
 
-    $this->load->model('materia_model');
+    //$this->load->model('materia_model');
 
     $data['main_content'] = 'planing_form';
     $this->load->view('includes/template',$data);

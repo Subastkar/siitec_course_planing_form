@@ -26,17 +26,4 @@ class Personal_model extends CI_Model {
     $query = $this->db->get('final');
     return $query->result();
   }
-
-  //function create_personal() {
-    //$new_personal_insert_data = (
-      //'nombre' => $this->input->post->('nombre'),
-      //'apellidop' => $this->input->post('apellidop'),
-      //'apellidom' => $this->input->post('apellidom'),
-      //'curp' => $this->input->post('curp'),
-      //'clave' => md5($this->input->post('clave'))
-    //);
-
-    //$insert = $this->db->insert('personal', $new_personal_insert_data);
-    //return $insert;
-  //}
 }
