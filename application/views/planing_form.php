@@ -58,7 +58,7 @@
     <tr>
       <td colspan='2' align='center'>Fecha de entrega de programaci&oacute;n</td>
       <td colspan='6' align='center'>Periodo programado para 1er, 2do y 3er. Seguimiento</td>
-      <td colspan='2' align='center'>Periodo de entrega de reporte finak</td>
+      <td colspan='2' align='center'>Periodo de entrega de reporte final</td>
     </tr>
     <tr>
       <td colspan='2' align='center'>Antes de inicio de clases</td>
@@ -71,5 +71,6 @@
 </div>
 
 <div id="foot_form">
+  <p>Vo.Bo. del Jefe de Departamento: </p>
   
 </div>

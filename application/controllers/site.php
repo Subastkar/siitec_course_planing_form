@@ -37,11 +37,11 @@ class Site extends CI_Controller {
 
   function course($materia){
 
-    $query_data['user'] = $this->session->userdata('username'); 
-    $periodo = $this->session->userdata('periodo'); 
-    $query_data['materia'] = $materia;
+    $data['user'] = $this->session->userdata('username'); 
+    $data['periodo'] = $this->session->userdata('periodo'); 
 
-    //$this->load->model('materia_model');
+    $this->load->model('materia_model');
+    $query = $this->materia_model->getCourse($materia);
 
     $data['main_content'] = 'planing_form';
     $this->load->view('includes/template',$data);
