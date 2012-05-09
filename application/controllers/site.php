@@ -36,15 +36,20 @@ class Site extends CI_Controller {
   }
 
   function course($materia){
-
-    $data['user'] = $this->session->userdata('username'); 
-    $data['periodo'] = $this->session->userdata('periodo'); 
-
+    $this->load->model('personal_model');
     $this->load->model('materia_model');
-    $query = $this->materia_model->getCourse($materia);
+
+    $user = $this->session->userdata('username'); 
+    $periodo = $this->session->userdata('periodo'); 
+    $data['nombre'] = $this->personal_model->infoUsuario($user);
+    $data['periodo'] = $periodo; 
+
+    $data['formulario'] = $this->materia_model->getCourse($materia,$periodo);
 
     $data['main_content'] = 'planing_form';
     $this->load->view('includes/template',$data);
+
+
   } 
 
 }

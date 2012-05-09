@@ -24,16 +24,16 @@
     <h4 style="text-align: center;">Subdirecci&oacute;n acad&eacute;mica</h4>
     <?php
       echo '<h4 style="text-align: center;"> Departamento _____ </h4>';
-      echo '<h4 style="text-align: center;"> Planeaci&oacute;n del curso y avance program&aacute;tico del periodo _____ </h4>';
+      echo '<h4 style="text-align: center;"> Planeaci&oacute;n del curso y avance program&aacute;tico del periodo ' . $periodo . ' </h4>';
     ?>
   </span>
 
   <span>
-    <p>Materia: _________________________________ HT ____ HP ____ CR ____ No. de Unidades _________</p>
-    <blockquote>
-      Objetivo de la matera:
-    </blockquote>
-    <p>Grupo: ____________ Carrera: _______________ Aula: ________________ Horario: _______________ Profesor: ______________________</p>
+    <?php
+      echo '<p><b>Materia:</b>   ' . $formulario->nombre_materia . '   <b>HT</b>   ' . $formulario->horas_teoricas . '   <b>HP</b>   ' . $formulario->horas_practicas . '   <b>CR</b>   ' . $formulario->creditos . '   <b>No. de Unidades</b> _________</p>';
+      echo '<blockquote>Objetivo de la matera:</blockquote>';
+      echo '<p><b>Grupo:</b>   ' . $formulario->grupo . '   <b>Carrera:</b>   ' . $formulario->carrera . '   <b>Aula:</b>   ' . $formulario->aula . '   <b>Horario:</b>   ' . $formulario->hora_inicio . ' - ' . $formulario->hora_fin . '   <b>Profesor:</b>   ' . $nombre->nombre . ' ' . $nombre->apellidop . ' ' . $nombre->apellidom . '</p>';
+  ?>
   </span>
 
   <table border ='1' align='center'>
