@@ -42,7 +42,7 @@ class Site extends CI_Controller {
 
     $user = $this->session->userdata('username'); 
     $periodo = $this->session->userdata('periodo'); 
-    $data['dia_inicio'] = $this->session->userdata('mes_inicio');
+    $data['dia_inicio'] = $this->session->userdata('dia_inicio');
     $data['mes_inicio'] = $this->session->userdata('mes_inicio');
     $data['ano_inicio'] = $this->session->userdata('ano_inicio');
     $data['nombre'] = $this->personal_model->infoUsuario($user);

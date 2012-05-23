@@ -60,7 +60,32 @@
           echo '<tr>';
           echo '<td>' . $contenido[$uni]->nombre . '</td>';
           echo '<td>' . $contenido[$uni]->contenido . '</td>';
-          echo '<td>' . $this->calendar->generate($ano_inicio, $mes_inicio, $dia_inicio) . '</td>';
+          $control = 0;
+          switch($mes_inicio)
+          {
+          case 1:$control = 31;break;
+          case 2:$control = 29;break;
+          case 3:$control = 31;break;
+          case 4:$control = 30;break;
+          case 5:$control = 31;break;
+          case 6:$control = 30;break;
+          case 7:$control = 31;break;
+          case 8:$control = 31;break;
+          case 9:$control = 30;break;
+          case 10:$control = 31;break;
+          case 11:$control = 30;break;
+          case 12:$control = 31;break;
+          }
+          if($dia_inicio > $control)
+          {
+            $dia_inicio = $dia_inicio - $control;
+            $mes_inicio++;
+          }
+          $data = array(
+             $dia_inicio => ''
+             ); 
+          echo '<td>' . $this->calendar->generate($ano_inicio, $mes_inicio, $data) . '</td>';
+          $dia_inicio = ($contenido[$uni]->tiempo * 7) + $dia_inicio;
           echo '</tr>';
           echo '</form>';
         }
