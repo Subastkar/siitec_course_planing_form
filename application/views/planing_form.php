@@ -30,8 +30,8 @@
 
   <span>
     <?php
-      echo '<p><b>Materia:</b>   ' . $formulario->nombre_materia . '   <b>HT</b>   ' . $formulario->horas_teoricas . '   <b>HP</b>   ' . $formulario->horas_practicas . '   <b>CR</b>   ' . $formulario->creditos . '   <b>No. de Unidades</b> _________</p>';
-      echo '<blockquote>Objetivo de la matera:</blockquote>';
+      echo '<p><b>Materia:</b>   ' . $formulario->nombre_materia . '   <b>HT</b>   ' . $formulario->horas_teoricas . '   <b>HP</b>   ' . $formulario->horas_practicas . '   <b>CR</b>   ' . $formulario->creditos . '   <b>No. de Unidades</b> ' . $formulario->unidades . '</p>';
+      echo '<blockquote>Objetivo de la matera:  ' . $formulario->objetivo . '</blockquote>';
       echo '<p><b>Grupo:</b>   ' . $formulario->grupo . '   <b>Carrera:</b>   ' . $formulario->carrera . '   <b>Aula:</b>   ' . $formulario->aula . '   <b>Horario:</b>   ' . $formulario->hora_inicio . ' - ' . $formulario->hora_fin . '   <b>Profesor:</b>   ' . $nombre->nombre . ' ' . $nombre->apellidop . ' ' . $nombre->apellidom . '</p>';
   ?>
   </span>
@@ -53,8 +53,19 @@
       <th>Programada</th>
       <th>Real</th>
     </tr>
-    <tr>
-    </tr>
+    <?php
+      for($uni = 1; $uni <= $formulario->unidades; $uni++){
+        if($contenido[$uni]!= null){
+          echo '<form>';
+          echo '<tr>';
+          echo '<td>' . $contenido[$uni]->nombre . '</td>';
+          echo '<td>' . $contenido[$uni]->contenido . '</td>';
+          echo '<td>' . $this->calendar->generate($ano_inicio, $mes_inicio, $dia_inicio) . '</td>';
+          echo '</tr>';
+          echo '</form>';
+        }
+      }
+    ?>
     <tr>
       <td colspan='2' align='center'>Fecha de entrega de programaci&oacute;n</td>
       <td colspan='6' align='center'>Periodo programado para 1er, 2do y 3er. Seguimiento</td>

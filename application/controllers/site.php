@@ -38,13 +38,21 @@ class Site extends CI_Controller {
   function course($materia){
     $this->load->model('personal_model');
     $this->load->model('materia_model');
+    $this->load->library('calendar');
 
     $user = $this->session->userdata('username'); 
     $periodo = $this->session->userdata('periodo'); 
+    $data['dia_inicio'] = $this->session->userdata('mes_inicio');
+    $data['mes_inicio'] = $this->session->userdata('mes_inicio');
+    $data['ano_inicio'] = $this->session->userdata('ano_inicio');
     $data['nombre'] = $this->personal_model->infoUsuario($user);
     $data['periodo'] = $periodo; 
 
     $data['formulario'] = $this->materia_model->getCourse($materia,$periodo);
+
+    for($uni = 1; $uni <= $data['formulario']->unidades; $uni++){
+      $data["contenido"][$uni] = $this->materia_model->getContent($materia,$uni);
+    }
 
     $data['main_content'] = 'planing_form';
     $this->load->view('includes/template',$data);
