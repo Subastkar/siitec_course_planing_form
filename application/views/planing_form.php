@@ -54,6 +54,15 @@
       <th>Real</th>
     </tr>
     <?php
+      $date = $ano_inicio.'-'.$mes_inicio .'-'.$dia_inicio;
+      echo '<script>
+        $(function() {
+          $(".datepick" ).datepicker({
+            dateFormat: "yy-mm-dd",
+            defaultDate: "'.$date.'" 
+          });
+        });
+    </script>';
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
           echo '<form>';
@@ -83,8 +92,10 @@
           }
           $data = array(
              $dia_inicio => ''
-             ); 
-          echo '<td>' . $this->calendar->generate($ano_inicio, $mes_inicio, $data) . '</td>';
+           ); 
+          $date = $ano_inicio.'-'.$mes_inicio .'-'.$dia_inicio; 
+          echo '<script>$(".datepick" ).datepicker( "option", "defaultDate", "'.$date.'" )</script>';
+          echo '<td>Del <input type="text" class="datepick" id="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" class="datepick" id="final_"' . $uni . '"></td>';
           $dia_inicio = ($contenido[$uni]->tiempo * 7) + $dia_inicio;
           echo '</tr>';
           echo '</form>';
