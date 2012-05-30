@@ -95,8 +95,10 @@
              $dia_inicio => ''
            ); 
           $date = $ano_inicio.'-'.$mes_inicio .'-'.$dia_inicio; 
-          echo '<script>$(".datepick" ).datepicker( "option", "defaultDate", "'.$date.'" )</script>';
-          echo '<td>Del <input type="text" class="datepick" id="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" class="datepick" id="final_"' . $uni . '"></td>';
+          $date2 = $ano_inicio.'-'.$mes_inicio .'-'.($dia_inicio-3); 
+          echo '<script>$("#inicio_'.$uni.'" ).datepicker( "option", "defaultDate", "'.$date.'" )</script>';
+          echo '<script>$("#final_'.$uni.'" ).datepicker( "option", "defaultDate", "'.$date2.'" )</script>';
+          echo '<td>Del <input type="text" class="datepick" id="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" class="datepick" id="final_"' . $uni . '" value="'.$date2.'"></td>';
           $dia_inicio = ($contenido[$uni]->tiempo * 7) + $dia_inicio;
           echo '</tr>';
           echo '</form>';
