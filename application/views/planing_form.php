@@ -59,7 +59,8 @@
         $(function() {
           $(".datepick" ).datepicker({
             dateFormat: "yy-mm-dd",
-            defaultDate: "'.$date.'" 
+            defaultDate: "'.$date.'", 
+            beforeShowDay: $.datepicker.noWeekends
           });
         });
     </script>';
