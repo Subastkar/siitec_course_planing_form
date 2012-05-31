@@ -1,5 +1,5 @@
 <div id="head_form">
-  <table border = 1 id="tabla1">
+  <table border = 1>
     <tr>
       <td rowspan='3'><?php
             echo img('assets/images/logo-itc.png');
@@ -13,7 +13,7 @@
     </tr>
     <tr>
       <td><p>Referencia a la Norma ISO 9001:2008 7.1, 7.2.1, 7.5.1, 7.6, 8.1, 8.2.4</p></td>
-      <td><p>P&aacute;gina 1 de 1</p></td>
+      <td><p>P&aacute;gina 1 de 3</p></td>
     </tr>
   </table>
 </div>
@@ -30,13 +30,12 @@
 
   <span>
     <?php
-      echo '<p><b>Materia:</b>   ' .'<k>'. $formulario->nombre_materia . '</k>' . '   <b>HT</b>   '.'<k>' . $formulario->horas_teoricas .'</k>'. '   <b>HP</b>   ' .'<k>'. $formulario->horas_practicas.'</k>' . '   <b>CR</b>   ' .'<k>'. $formulario->creditos .'</k>'. '   <b>No. de Unidades</b> ' .'<k>'. $formulario->unidades.'</k>' . '</p>';
-      echo '<blockquote>Objetivo de la matera:  ' .'<k>'. $formulario->objetivo .'</k>'. '</blockquote>';
-      echo '<p><b>Grupo:</b>   ' .'<k>'. $formulario->grupo .'</k>'. '   <b>Carrera:</b>   ' .'<k>'. $formulario->carrera .'</k>'. '   <b>Aula:</b>   ' .'<k>'. $formulario->aula .'</k>'. '   <b>Horario:</b>   ' .'<k>'. $formulario->hora_inicio .'</k>'. ' - ' .'<k>'. $formulario->hora_fin .'</k>'. '   <b>Profesor:</b>   ' .'<k>'. $nombre->nombre .'</k>'. ' ' .'<k>'. $nombre->apellidop .'</k>'. ' ' .'<k>'. $nombre->apellidom .'</k>'. '</p>';
+      echo '<p><b>Materia:</b>   ' . $formulario->nombre_materia . '   <b>HT</b>   ' . $formulario->horas_teoricas . '   <b>HP</b>   ' . $formulario->horas_practicas . '   <b>CR</b>   ' . $formulario->creditos . '   <b>No. de Unidades</b> ' . $formulario->unidades . '</p>';
+      echo '<blockquote>Objetivo de la matera:  ' . $formulario->objetivo . '</blockquote>';
+      echo '<p><b>Grupo:</b>   ' . $formulario->grupo . '   <b>Carrera:</b>   ' . $formulario->carrera . '   <b>Aula:</b>   ' . $formulario->aula . '   <b>Horario:</b>   ' . $formulario->hora_inicio . ' - ' . $formulario->hora_fin . '   <b>Profesor:</b>   ' . $nombre->nombre . ' ' . $nombre->apellidop . ' ' . $nombre->apellidom . '</p>';
   ?>
   </span>
 
-  <form action="<?echo base_url();?>index.php/site/save/TWM-0703" method="post">
   <table border ='1' align='center'>
     <tr>
       <th rowspan='2'>Unidad Tem&aacute;tica</th>
@@ -55,11 +54,23 @@
       <th>Real</th>
     </tr>
     <?php
+      $date = $ano_inicio.'-'.$mes_inicio .'-'.$dia_inicio;
+      echo '<script>
+        $(function() {
+          $(".datepick" ).datepicker({
+            dateFormat: "yy-mm-dd",
+            defaultDate: "'.$date.'", 
+            beforeShowDay: $.datepicker.noWeekends
+          });
+        });
+	$("#inicio_1").val();
+    </script>';
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
+          echo '<form>';
           echo '<tr>';
-          echo '<td id="nombre_u">' . $contenido[$uni]->nombre . '</td>';
-          echo '<td id="contenido">' . $contenido[$uni]->contenido . '</td>';
+          echo '<td>' . $contenido[$uni]->nombre . '</td>';
+          echo '<td>' . $contenido[$uni]->contenido . '</td>';
           $control = 0;
           switch($mes_inicio)
           {
@@ -83,7 +94,7 @@
           }
           $data = array($dia_inicio => ''); 
           $date = $ano_inicio.'-'.$mes_inicio .'-'.$dia_inicio; 
-	        $dia2 = $dia_inicio;
+	  $dia2 = $dia_inicio;
           $dia2 = ($contenido[$uni]->tiempo * 7) + ($dia2-3);
           switch($mes_inicio)
           {
@@ -108,34 +119,19 @@
           $date2 = $ano_inicio.'-'.$mes_inicio .'-'.($dia2); 
           $dia_inicio = $dia2 + 3;
 
-          echo '<script>
-            $(function() {
-              $(".datepick" ).datepicker({
-                dateFormat: "yy-mm-dd",
-                defaultDate: "'.$date.'", 
-                beforeShowDay: $.datepicker.noWeekends,
-                onClose: function(dateText, inst){
-                    var num = $(this).attr("id");
-                    var id = num.split("_");
-                    if(id[0] == "final"){
-                      changeDate(id[1]);
-                    }
-                }
-                });
-              });
-            </script>';
 
-          echo '<input type="hidden" name="unidades" value="'.$formulario->unidades.'">';
+          echo '<script>$("#inicio_'.$uni.'" ).datepicker( "option", "defaultDate", "'.$date.'" )</script>';
           echo '<script>$("#final_'.$uni.'" ).datepicker( "option", "defaultDate", "'.$date2.'" )</script>';
-          echo '<td id="fecha_p">Del <input type="text" class="datepick" id="inicio_' . $uni .'" name="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" 			class="datepick" id="final_' . $uni . '" name="final_' . $uni .'" value="'.$date2.'"></td>';
-          echo '<td id="fecha_r"></td>';
-      	  echo '<td id="evaluacion_p"><input type="text" class="datepick" class="datepick" id="examen_' . $uni .'" value="'.$date2.'"></td>';
-      	  echo '<td id="evaluacion_r"></td>';
-      	  echo '<td id="porcentaje"></td>';
-      	  echo '<td id="firma_d"></td>';
-      	  echo '<td id="firma_ja"></td>';
-      	  echo '<td id="observaciones"></td>';
+          echo '<td>Del <input type="text" class="datepick" id="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" 			class="datepick" id="final_"' . $uni . '" value="'.$date2.'"></td>';
+	  echo '<td>Fechas(periodo) Real</td>';
+	  echo '<td><input type="text" class="datepick" class="datepick" id="inicio_' . $uni .'" value="'.$date2.'"></td>';
+	  echo '<td>Evaluación Real</td>';
+	  echo '<td>Porcentaje de aprobación</td>';
+	  echo '<td>Firma del docente</td>';
+	  echo '<td>Firma del jefe academico</td>';
+	  echo '<td>Observaciones</td>';
           echo '</tr>';
+          echo '</form>';
         }
       }
     ?>
@@ -154,19 +150,9 @@
       <td colspan='2' align='center'> ( semana 16 o 17 ) </td>
     </tr>
   </table>
-  <input type="submit" value="Guardar cambios" />
-  </form>
 </div>
 
 <div id="foot_form">
   <p>Vo.Bo. del Jefe de Departamento: </p>
+  
 </div>
-
-<script>
-  function changeDate(id){
-    var fecha = $("#final_"+id).attr("value");
-    var date = fecha.split("-");
-    var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
-    $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
-  } 
-</script>

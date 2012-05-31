@@ -60,4 +60,14 @@ class Site extends CI_Controller {
 
   } 
 
+  function save($materia){
+    $unidades = $this->input->post('unidades');
+    echo $materia.'<br/>';
+    echo $unidades.'<br/>';
+    for($uni = 1; $uni <= $unidades; $uni++){
+      echo $this->input->post('inicio_'.$uni).'<br/>';
+      echo $this->input->post('final_'.$uni).'<br/>';
+    }
+  }
+
 }

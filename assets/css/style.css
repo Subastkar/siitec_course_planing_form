@@ -1,13 +1,20 @@
 body {
-  background: #6b6b6b;
+  background: white;
   margin: 0;
-  padding: 0;
+  padding: 5%;
+  padding-top: 0;
   font-family: Arial;
+  color:black;
+  width: 90%;
+}
+
+#header{
+  background-color: green;
 }
 
 #login_form {
   width: 300px;
-  background: #f0f0f0;
+  background: white;
   border: 1px solid white;
   margin: 20px 0 0 20px;
   border-radius: 8px;
@@ -22,8 +29,11 @@ h1,h2 {
 
 h4 {
   margin: 0 0;
+  font-size: 20px;
 }
-
+#login_form{
+  background-color: gray;
+}
 input[type=text], input[type=password] {
   display: block;
   margin: 0 0 1em 7px;
@@ -33,7 +43,16 @@ input[type=text], input[type=password] {
   padding: 1em;
   box-shadow: 2px 2px grey;
 }
-
+#div_header{
+  height: 127px;
+  padding-left: 12%;
+  padding-top: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#div_header img{
+  vertical-align: 0px;
+}
 input[type=submit], form a {
   border: none;
   margin-left: 1em;
@@ -42,25 +61,78 @@ input[type=submit], form a {
   text-decoration: none;
   font-size: 12px;
   border-radius: 6px;
-  background: #348054;
-  color: white;
+  background: white;
+  color: black;
   box-shadow: 2px 2px grey;
 }
-
+/*
 input[type=submit]:hover, form a:hover {
-  background: #287368;
+  background: white;
   cursor: pointer;
 }
+*/
+#nombre_u{
+  color: black;
+}
+#contenido{
+  color: blue;
+  width: 400px;
 
-
+}
+#fecha_p{
+  width: 100px;
+}
+#fecha_r{
+  width: 100px;
+}
+#evaluacion_p{
+  width: 100px;
+}
+#evaluacion_r{
+  width: 100px;
+}
+#porcentaje{
+}
+#firma_d{
+}
+#firma_ja{
+}
+table{
+  border-radius: 10px;
+  align: center;
+}
+th{
+  align: center;
+  color: Blue;
+}
+k{
+  color: blue;
+}
+td{
+  align: center;
+}
+input[type=password]{
+  align: center;
+  width: 100px;
+}
+input[type=text]{
+  color: black;
+  width: 60px;
+}
+#tabla1{
+  background-color: #c0c0c0;
+  align: center;
+  color: black;
+  margin-left: 12%;
+}
 .error {
   color: #393939;
   font-size: 15px;
 }
-
 fieldset {
   width: 300px;
   margin: auto;
   margin-bottom: 2em;
-  display: block;
+/*  display: block;*/
 }
+
