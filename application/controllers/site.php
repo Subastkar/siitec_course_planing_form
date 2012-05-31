@@ -20,6 +20,21 @@ class Site extends CI_Controller {
     $this->load->view('includes/template',$data);
   }
 
+  function admin_area(){
+    $data['main_content'] = 'admin_area';
+    $this->load->view('includes/template',$data);
+  }
+
+  function new_curso(){
+    $this->load->model('new_info');
+
+    $data["dia_inicio"] = $this->input->post('fecha');
+    $data["ciclo_escolar"] = $this->input->post('ciclo');
+
+    $this->new_info->new_course($data);
+
+  }
+
   function is_logged_in(){
     $is_logged_in = $this->session->userdata('is_logged_in');
 
@@ -54,8 +69,7 @@ class Site extends CI_Controller {
       $data["contenido"][$uni] = $this->materia_model->getContent($materia,$uni);
     }
 
-    $data['main_content'] = 'planing_form';
-    $this->load->view('includes/template',$data);
+    $this->load->view('planing_form',$data);
 
 
   } 
