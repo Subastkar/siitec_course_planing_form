@@ -1,3 +1,23 @@
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Siitec</title>
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ui-lightness/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <script src="<?php echo base_url();?>assets/script/jquery.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/script/jquery-ui.js" type="text/javascript"></script>
+  <script>
+    function changeDate(id){
+      var fecha = $("#final_"+id).attr("value");
+      var date = fecha.split("-");
+      var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
+      $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
+    } 
+  </script>
+</head>
+
+<body>
+<div id="div_content">
 <div id="head_form">
   <table border = 1 id="tabla1">
     <tr>
@@ -37,7 +57,7 @@
   </span>
 
   <form action="<?echo base_url();?>index.php/site/save/TWM-0703" method="post">
-  <table border ='1' align='center'>
+  <table border ='1' align='center' id='t_data'>
     <tr>
       <th rowspan='2'>Unidad Tem&aacute;tica</th>
       <th rowspan='2'>Subtemas</th>
@@ -55,6 +75,7 @@
       <th>Real</th>
     </tr>
     <?php
+      list($ano_inicio, $mes_inicio, $dia_inicio) = explode("-", $inicio);
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
           echo '<tr>';
@@ -154,19 +175,13 @@
       <td colspan='2' align='center'> ( semana 16 o 17 ) </td>
     </tr>
   </table>
+  <div id="foot_form">
+    <p>Vo.Bo. del Jefe de Departamento: </p>
+  </div>
   <input type="submit" value="Guardar cambios" />
   </form>
 </div>
-
-<div id="foot_form">
-  <p>Vo.Bo. del Jefe de Departamento: </p>
 </div>
 
-<script>
-  function changeDate(id){
-    var fecha = $("#final_"+id).attr("value");
-    var date = fecha.split("-");
-    var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
-    $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
-  } 
-</script>
+</body>
+</html>

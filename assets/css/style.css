@@ -1,8 +1,7 @@
 body {
-  background: white;
+  background: gray;
   margin: 0;
-  padding: 5%;
-  padding-top: 0;
+  padding-left: 5%;
   font-family: Arial;
   color:black;
   width: 90%;
@@ -31,9 +30,11 @@ h4 {
   margin: 0 0;
   font-size: 20px;
 }
+
 #login_form{
   background-color: gray;
 }
+
 input[type=text], input[type=password] {
   display: block;
   margin: 0 0 1em 7px;
@@ -43,16 +44,31 @@ input[type=text], input[type=password] {
   padding: 1em;
   box-shadow: 2px 2px grey;
 }
+
 #div_header{
-  height: 127px;
+  background-color: #e3e3e3;
+}
+
+#div_content{
+  padding:20px 20px 20px 20px;
+  background-color: white;
+}
+
+#div_footer{
+  height: 100px;
+  padding-top:20px;
   padding-left: 12%;
-  padding-top: 0;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: #e3e3e3;
+  border-radius: 0 0 5px 5px;
 }
+
+#div_footer p{
+  padding-top: 30px;
+}
+
 #div_header img{
-  vertical-align: 0px;
 }
+
 input[type=submit], form a {
   border: none;
   margin-left: 1em;
@@ -63,76 +79,108 @@ input[type=submit], form a {
   border-radius: 6px;
   background: white;
   color: black;
-  box-shadow: 2px 2px grey;
+  box-shadow: 2px 2px gray;
 }
-/*
-input[type=submit]:hover, form a:hover {
-  background: white;
-  cursor: pointer;
-}
-*/
+
 #nombre_u{
   color: black;
 }
+
 #contenido{
   color: blue;
   width: 400px;
+}
 
-}
 #fecha_p{
-  width: 100px;
+  width: 200px;
 }
+
 #fecha_r{
-  width: 100px;
+  width: 200px;
 }
+
 #evaluacion_p{
   width: 100px;
 }
+
 #evaluacion_r{
   width: 100px;
 }
-#porcentaje{
+
+#t_data tr {
+  width: 100px;
 }
-#firma_d{
-}
-#firma_ja{
-}
+
 table{
   border-radius: 10px;
   align: center;
 }
-th{
+
+#t_data th{
   align: center;
   color: Blue;
 }
+
 k{
   color: blue;
 }
+
 td{
   align: center;
 }
+
 input[type=password]{
   align: center;
   width: 100px;
 }
+
 input[type=text]{
   color: black;
-  width: 60px;
+  width: 8em;
 }
+
 #tabla1{
-  background-color: #c0c0c0;
   align: center;
   color: black;
-  margin-left: 12%;
+  margin-left: 5%;
 }
+
 .error {
   color: #393939;
   font-size: 15px;
 }
+
 fieldset {
   width: 300px;
   margin: auto;
   margin-bottom: 2em;
-/*  display: block;*/
+}
+
+.admin_panel {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+#admin_1 {
+  width: 50%;
+}
+
+#admin_2 {
+  width: 75%;
+  padding-bottom: 20px;
+}
+
+.admin_panel input {
+  display: inline-block;
+  margin: 10px 10px;
+}
+
+.admin_panel p {
+  padding-left: 15px;
+}
+
+#admin_table {
+  margin-left: 30px;
+  width: 95%;
 }
 

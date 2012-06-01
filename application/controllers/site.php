@@ -31,8 +31,27 @@ class Site extends CI_Controller {
     $data["dia_inicio"] = $this->input->post('fecha');
     $data["ciclo_escolar"] = $this->input->post('ciclo');
 
-    $this->new_info->new_course($data);
+    if($data["dia_inicio"] != "" && $data["ciclo_escolar"] !="")
+        $this->new_info->new_course($data);
 
+    redirect('site/admin_area');
+  }
+
+  function curso_data(){
+    $this->load->model('new_info');
+
+    $data["materia"] = $this->input->post('materia');
+    $unidades = $this->input->post('unidades');
+
+    for($uni = 1; $uni <= $unidades; $uni++){
+      $data["unidad"] = $uni;
+      $data["nombre"] = $this->input->post('nombre_'.$uni);
+      $data["contenido"] = $this->input->post('contenido_'.$uni);
+      $data["tiempo"] = $this->input->post('semanas_'.$uni);
+      $this->new_info->new_data($data);
+    }
+
+    redirect('site/admin_area');
   }
 
   function is_logged_in(){
@@ -57,9 +76,7 @@ class Site extends CI_Controller {
 
     $user = $this->session->userdata('username'); 
     $periodo = $this->session->userdata('periodo'); 
-    $data['dia_inicio'] = $this->session->userdata('dia_inicio');
-    $data['mes_inicio'] = $this->session->userdata('mes_inicio');
-    $data['ano_inicio'] = $this->session->userdata('ano_inicio');
+    $data['inicio'] = $this->session->userdata('dia_inicio');
     $data['nombre'] = $this->personal_model->infoUsuario($user);
     $data['periodo'] = $periodo; 
 

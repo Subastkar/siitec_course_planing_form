@@ -19,7 +19,7 @@ class Login extends CI_Controller {
     if ($query)// if the user's crednetials validated
     {
       $curse = $this->datos_model->getInfo();
-      $data = array('username' => $this->input->post('username'), 'is_logged_in' => true, 'periodo' => $curse->ciclo_escolar, 'dia_inicio' => $curse->dia, 'mes_inicio' => $curse->mes, 'ano_inicio' => $curse->ano);
+      $data = array('username' => $this->input->post('username'), 'is_logged_in' => true, 'periodo' => $curse->ciclo_escolar, 'dia_inicio' => $curse->dia_inicio);
       $this->session->set_userdata($data);
       redirect('site/personal_area');
     }
