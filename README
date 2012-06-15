@@ -1,1 +1,23 @@
 Cloning this project, will make the base URL change. Check out your config.php and change it to your own url.
+
+To make this project work, you need to have the following tables of the siitec_db.
+
+- aula
+- carrera
+- edificio
+- grupo
+- horario
+- horariogrupo
+- materia
+- personal
+
+And need to add the next tables:
+
+- datos_curso
+- contenido_materia
+
+Modify the materia table, adding the 'objetivo' column.
+
+Finally create the view 'view_grupos_mateira'.
+
+For the new tables and views the script is added in this git.
