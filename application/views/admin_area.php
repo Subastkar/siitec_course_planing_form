@@ -56,7 +56,9 @@ Dar de alta los datos del curso:
 <form action='<?echo base_url();?>index.php/site/curso_data' method='post' class="admin_panel" id="admin_2"/>
   <p>Id de la materia: <input type="text" name="materia" />
   N&uacute;mero de unidades: <input type="text" name="unidades" id="unidades"/>
-  <input type="button" value="Generar tabla" onclick="javascript:addRow('admin_table')"/></p>
+  <input type="button" value="Generar tabla" onclick="javascript:addRow('admin_table')"/><br/>
+  Objetivo del curso: <br/>
+  <textarea style="width: 800px; height: 70px;" name="objetivo"></textarea></p>
   <table border ="1" id="admin_table">
   <tr>
     <th>Unidad</th>

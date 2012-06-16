@@ -40,7 +40,13 @@ class Site extends CI_Controller {
   function curso_data(){
     $this->load->model('new_info');
 
-    $data["materia"] = $this->input->post('materia');
+    $materia = $this->input->post('materia');
+    $data["materia"] = $materia;
+    $data2["objetivo"] = $this->input->post('objetivo');
+    $data2["numunidades"] = $this->input->post('unidades');
+
+    $this->new_info->update_materia($data2,$materia);
+
     $unidades = $this->input->post('unidades');
 
     for($uni = 1; $uni <= $unidades; $uni++){
