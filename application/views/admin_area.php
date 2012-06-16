@@ -7,15 +7,12 @@
   });
 
   function addRow(tableID) {
-    console.log('Here');
     var table = document.getElementById(tableID);
 
     var units = $("#unidades").attr("value");
 
-    console.log('Units: '+units);
     for(var n = 1; n <= units; n++){
 
-    console.log('Lets roll '+n);
       var rowCount = table.rows.length;
       var row = table.insertRow(rowCount);
   
@@ -29,9 +26,9 @@
       cell2.appendChild(element2);
   
       var cell3 = row.insertCell(2);
-      var element3 = document.createElement("input");
-      element3.type = "text";
+      var element3 = document.createElement("textarea");
       element3.name = "contenido_"+n;
+      element3.className = "contenido";
       cell3.appendChild(element3);
   
       var cell4 = row.insertCell(3);
