@@ -79,8 +79,8 @@
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
           echo '<tr>';
-          echo '<td id="nombre_u">' . $contenido[$uni]->nombre . '</td>';
-          echo '<td id="contenido">' . $contenido[$uni]->contenido . '</td>';
+          echo '<td id="nombre_u"><textarea name="nombre_'.$uni.'">' . $contenido[$uni]->nombre . '</textarea></td>';
+          echo '<td id="contenido"><textarea class="contenido" name="contenido_'.$uni.'">' . $contenido[$uni]->contenido . '</textarea></td>';
           $control = 0;
           switch($mes_inicio)
           {
