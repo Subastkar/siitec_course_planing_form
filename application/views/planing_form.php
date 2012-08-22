@@ -13,6 +13,11 @@
       var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
       $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
     } 
+
+    function count_rows(){
+      var rowCount = document.getElementById("t_data").getElementsByTagName("tr").length;
+      var hidden_element = document.getElementById("row_count").value = rowCount-6;
+    }
   </script>
 </head>
 
@@ -177,7 +182,9 @@
   </table>
   <div id="foot_form">
     <p>Vo.Bo. del Jefe de Departamento: </p>
+    <input type="hidden" name="row_count" id="row_count" value="0" />
   </div>
+  <input type="button" value="Separar semanas" onClick="javascript:count_rows()" />
   <input type="submit" value="Guardar cambios" />
   </form>
 </div>
