@@ -6,19 +6,6 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ui-lightness/jquery-ui.css" type="text/css" media="screen" title="no title" charset="utf-8">
   <script src="<?php echo base_url();?>assets/script/jquery.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/script/jquery-ui.js" type="text/javascript"></script>
-  <script>
-    function changeDate(id){
-      var fecha = $("#final_"+id).attr("value");
-      var date = fecha.split("-");
-      var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
-      $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
-    } 
-
-    function count_rows(){
-      var rowCount = document.getElementById("t_data").getElementsByTagName("tr").length;
-      var hidden_element = document.getElementById("row_count").value = rowCount-6;
-    }
-  </script>
 </head>
 
 <body>
@@ -190,5 +177,26 @@
 </div>
 </div>
 
+  <script>
+    function changeDate(id){
+      var fecha = $("#final_"+id).attr("value");
+      var date = fecha.split("-");
+      var newDate = date[0]+"-"+date[1]+"-"+(Number(date[2])+1);
+      $("#inicio_2").datepicker( "option", "defaultDate", "2012-02-07");
+    } 
+
+    function count_rows(){
+      var rowCount = document.getElementById("t_data").getElementsByTagName("tr").length;
+      var hidden_element = document.getElementById("row_count").value = rowCount-6;
+    }
+
+    $(document).ready(function() {
+      $('#t_data').on('DOMNodeInserted', function(e){
+        console.log(e);
+        console.log(e.target);
+        console.log('modificar los ids');
+      })
+    });
+  </script>
 </body>
 </html>
