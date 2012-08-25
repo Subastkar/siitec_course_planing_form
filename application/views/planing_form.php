@@ -70,7 +70,7 @@
       list($ano_inicio, $mes_inicio, $dia_inicio) = explode("-", $inicio);
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
-          echo '<tr>';
+          echo '<tr id="row_'. $uni .'">';
           echo '<td id="nombre_u"><textarea name="nombre_'.$uni.'">' . $contenido[$uni]->nombre . '</textarea></td>';
           echo '<td id="contenido"><textarea class="contenido" name="contenido_'.$uni.'">' . $contenido[$uni]->contenido . '</textarea></td>';
           $control = 0;
@@ -147,14 +147,12 @@
       	  echo '<td id="porcentaje"></td>';
       	  echo '<td id="firma_d"></td>';
       	  echo '<td id="firma_ja"></td>';
-      	  echo '<td id="observaciones"></td>';
+      	  echo '<td id="observaciones"><input type="hidden" name="semanas_unidad_'. $uni . '" value="'. $contenido[$uni]->tiempo.'"/></td>';
           echo '</tr>';
         }
       }
     ?>
     <tr>
-    <tr>
-    </tr>
       <td colspan='2' align='center'>Fecha de entrega de programaci&oacute;n</td>
       <td colspan='6' align='center'>Periodo programado para 1er, 2do y 3er. Seguimiento</td>
       <td colspan='2' align='center'>Periodo de entrega de reporte final</td>
@@ -171,7 +169,7 @@
     <p>Vo.Bo. del Jefe de Departamento: </p>
     <input type="hidden" name="row_count" id="row_count" value="0" />
   </div>
-  <input type="button" value="Separar semanas" onClick="javascript:count_rows()" />
+  <input type="button" value="Separar semanas" onClick="javascript:clone_rows()" />
   <input type="submit" value="Guardar cambios" />
   </form>
 </div>
@@ -188,6 +186,14 @@
     function count_rows(){
       var rowCount = document.getElementById("t_data").getElementsByTagName("tr").length;
       var hidden_element = document.getElementById("row_count").value = rowCount-6;
+    }
+
+    function clone_rows(){
+      //row = 1;
+      var row = document.getElementById("row_"+1); // find row to copy
+      var clone = row.cloneNode(true); // copy children too
+      clone.id = "unknow"; // change id or other attributes/contents
+      row.insertAfter(clone); // add new row to end of table
     }
 
     $(document).ready(function() {
