@@ -101,9 +101,23 @@ class Site extends CI_Controller {
     $unidades = $this->input->post('unidades');
     echo $materia.'<br/>';
     echo $unidades.'<br/>';
-    for($uni = 1; $uni <= $unidades; $uni++){
-      echo $this->input->post('inicio_'.$uni).'<br/>';
-      echo $this->input->post('final_'.$uni).'<br/>';
+    $filas = $this->input->post('row_count');
+    if($filas!=0){
+      for($uni = 1; $uni <= (int)$filas; $uni++){
+        echo $this->input->post('nombre_'.$uni).'<br/>';
+        echo $this->input->post('contenido_'.$uni).'<br/>';
+        echo $this->input->post('inicio_'.$uni).'<br/>';
+        echo $this->input->post('final_'.$uni).'<br/>';
+        echo $this->input->post('semanas_unidad_'.$uni).'<br/>';
+      }
+    }else{
+      for($uni = 1; $uni <= $unidades; $uni++){
+        echo $this->input->post('nombre_'.$uni).'<br/>';
+        echo $this->input->post('contenido_'.$uni).'<br/>';
+        echo $this->input->post('inicio_'.$uni).'<br/>';
+        echo $this->input->post('final_'.$uni).'<br/>';
+        echo $this->input->post('semanas_unidad_'.$uni).'<br/>';
+      }
     }
   }
 

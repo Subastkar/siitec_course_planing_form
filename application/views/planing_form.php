@@ -71,8 +71,8 @@
       for($uni = 1; $uni <= $formulario->unidades; $uni++){
         if($contenido[$uni]!= null){
           echo '<tr id="row_'. $uni .'">';
-          echo '<td id="nombre_u"><textarea name="nombre_'.$uni.'">' . $contenido[$uni]->nombre . '</textarea></td>';
-          echo '<td id="contenido"><textarea class="contenido" name="contenido_'.$uni.'">' . $contenido[$uni]->contenido . '</textarea></td>';
+          echo '<td id="nombre_u"><textarea id="nombre_'. $uni .'" name="nombre_'.$uni.'">' . $contenido[$uni]->nombre . '</textarea></td>';
+          echo '<td id="contenido"><textarea class="contenido" id="contenido_'. $uni .'" name="contenido_'.$uni.'">' . $contenido[$uni]->contenido . '</textarea></td>';
           $control = 0;
           switch($mes_inicio)
           {
@@ -138,7 +138,7 @@
               });
             </script>';
 
-          echo '<input type="hidden" name="unidades" value="'.$formulario->unidades.'">';
+          echo '<input type="hidden"  name="unidades" value="'.$formulario->unidades.'">';
           echo '<script>$("#final_'.$uni.'" ).datepicker( "option", "defaultDate", "'.$date2.'" )</script>';
           echo '<td id="fecha_p">Del <input type="text" class="datepick" id="inicio_' . $uni .'" name="inicio_' . $uni .'" value="'.$date.'"><br />Al <input type="text" 			class="datepick" id="final_' . $uni . '" name="final_' . $uni .'" value="'.$date2.'"></td>';
           echo '<td id="fecha_r"></td>';
@@ -198,10 +198,20 @@
           ids--;
           clone = row_to_clone.clone(true);
           $(clone).attr('id', 'row_'+ids);
+          $(clone).find('#nombre_'+rows).attr('name','nombre_'+ids);
+          $(clone).find('#contenido_'+rows).attr('name','contenido_'+ids);
+          $(clone).find('#inicio_'+rows).attr('name','inicio_'+ids);
+          $(clone).find('#final_'+rows).attr('name','final_'+ids);
+          $(clone).find('#semanas_unidad_'+rows).attr('name','semanas_unidad_'+ids);
           row_to_clone.after(clone);
           clone_loops--;
          }
         ids--;
+        $('#t_data').find('#row_'+rows).find('#nombre_'+rows).attr('name','nombre_'+ids);
+        $('#t_data').find('#row_'+rows).find('#contenido_'+rows).attr('name','contenido_'+ids);
+        $('#t_data').find('#row_'+rows).find('#inicio_'+rows).attr('name','inicio_'+ids);
+        $('#t_data').find('#row_'+rows).find('#final_'+rows).attr('name','final_'+ids);
+        $('#t_data').find('#row_'+rows).find('#semanas_unidad_'+rows).attr('name','semanas_unidad_'+ids);
         $('#t_data').find('#row_'+rows).attr('id','row_'+ids);
         rows--;
       }
