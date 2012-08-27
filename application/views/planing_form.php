@@ -190,10 +190,10 @@
 
     function clone_rows(){
       //row = 1;
-      var row = document.getElementById("row_"+1); // find row to copy
-      var clone = row.cloneNode(true); // copy children too
+      row = $('#t_data').find('#row_'+1); // find row to copy
+      clone = row.clone(true); // copy children too
       clone.id = "unknow"; // change id or other attributes/contents
-      row.insertAfter(clone); // add new row to end of table
+      row.after(clone); // add new row to end of table
     }
 
     $(document).ready(function() {
