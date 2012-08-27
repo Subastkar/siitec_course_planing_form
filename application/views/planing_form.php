@@ -147,7 +147,7 @@
       	  echo '<td id="porcentaje"></td>';
       	  echo '<td id="firma_d"></td>';
       	  echo '<td id="firma_ja"></td>';
-      	  echo '<td id="observaciones"><input type="hidden" name="semanas_unidad_'. $uni . '" value="'. $contenido[$uni]->tiempo.'"/></td>';
+      	  echo '<td id="observaciones"><input type="hidden" id="semanas_unidad_'. $uni . '" name="semanas_unidad_'. $uni . '" value="'. $contenido[$uni]->tiempo.'"/></td>';
           echo '</tr>';
         }
       }
@@ -189,20 +189,24 @@
     }
 
     function clone_rows(){
-      //row = 1;
-      row = $('#t_data').find('#row_'+1); // find row to copy
-      clone = row.clone(true); // copy children too
-      clone.id = "unknow"; // change id or other attributes/contents
-      row.after(clone); // add new row to end of table
+      rows = <? echo $uni - 1; ?>;
+      ids = 17;
+      while(rows>=1){
+        row_to_clone = $('#t_data').find('#row_'+rows);
+        clone_loops = row_to_clone.find('#semanas_unidad_'+rows).attr('value');
+        while(clone_loops>1){
+          ids--;
+          clone = row_to_clone.clone(true);
+          $(clone).attr('id', 'row_'+ids);
+          row_to_clone.after(clone);
+          clone_loops--;
+         }
+        ids--;
+        $('#t_data').find('#row_'+rows).attr('id','row_'+ids);
+        rows--;
+      }
+      $('#row_count').attr('value', '16');
     }
-
-    $(document).ready(function() {
-      $('#t_data').on('DOMNodeInserted', function(e){
-        console.log(e);
-        console.log(e.target);
-        console.log('modificar los ids');
-      })
-    });
   </script>
 </body>
 </html>
